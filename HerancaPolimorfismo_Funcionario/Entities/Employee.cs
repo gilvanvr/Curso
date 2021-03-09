@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HerancaPolimorfismo_Funcionario.Entities
+﻿namespace HerancaPolimorfismo_Funcionario.Entities
 {
     class Employee
     {
-        public String Name { get; set; }
+        public string Name { get; set; }
         public int Hours { get; set; }
         public double ValuePerHour { get; set; }
 

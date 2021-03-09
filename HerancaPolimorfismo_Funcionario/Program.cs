@@ -9,30 +9,45 @@ namespace HerancaPolimorfismo_Funcionario
     {
         static void Main(string[] args)
         {
-            //Decimal PercentualToleranciaEixo = Convert.ToDecimal(Convert.ToInt32((float.Parse("10.0".Replace(".", ",")))));
-            // string teste1 = "5.0".Replace(".",",") ?? "0";
-            //   decimal teste = Convert.ToDecimal(teste1);
-            //// int teste2 = Convert.ToInt32(PercentualToleranciaEixo);
-            //// Decimal dec = teste;
+            List<Employee> list = new List<Employee>();
 
-            ////  Console.WriteLine(dec); 
-            ////Console.WriteLine(decimal.Parse("10.0", CultureInfo.InvariantCulture));
-            ////decimal t = decimal.Parse("10.0", CultureInfo.InvariantCulture);
-            ////Console.WriteLine(t);
+            Console.Write("Enter the number of employees: ");
+            int n = int.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-            //Console.WriteLine(decimal.Round(teste));
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine($"Employee #{i + 1} data: ");
+                Console.Write("Outsourced (y/n)? ");
+                char resp = char.Parse(Console.ReadLine());
+                Console.Write("Name: ");
+                string name = Console.ReadLine();
+                Console.Write("Hours: ");
+                int hours = int.Parse(Console.ReadLine());
+                Console.Write("Value per hour: ");
+                double valuePerHour = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-            string percentualToleranciaEixos = "5.0";
-            string percentualToleranciaPBTC = "10.0";
+                if (resp == 'y')
+                {
+                    Console.Write("Additional Charge: ");
+                    double additionalCharge = double.Parse(Console.ReadLine(),CultureInfo.InvariantCulture);
+                    list.Add(new OutsorcedEmployee(name, hours, valuePerHour, additionalCharge));
+                }
+                else
+                {
+                    list.Add(new Employee(name, hours, valuePerHour));
+                }
 
-            string percentualToleranciaEixosS = percentualToleranciaEixos?.Replace(".", ",") ?? "0";
-            string percentualToleranciaPBTCS = percentualToleranciaPBTC?.Replace(".", ",") ?? "0";
+            }
 
-            decimal percentualToleranciaEixo1 = decimal.Round(Convert.ToDecimal(percentualToleranciaEixosS));
-            decimal percentualToleranciaPBTC1 = decimal.Round(Convert.ToDecimal(percentualToleranciaPBTCS));
+            Console.WriteLine();
+            Console.WriteLine("PAYMENTS:");
 
-            Console.WriteLine(percentualToleranciaEixo1);
-            Console.WriteLine(percentualToleranciaPBTC1);
+            foreach (Employee emp in list)
+            {
+                Console.WriteLine(emp.Name+" - $ "+ emp.Payment().ToString("F2", CultureInfo.InvariantCulture));
+            }
+
+
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HerancaPolimorfismo_Funcionario.Entities
+﻿namespace HerancaPolimorfismo_Funcionario.Entities
 {
     class OutsorcedEmployee : Employee
     {
@@ -12,8 +8,7 @@ namespace HerancaPolimorfismo_Funcionario.Entities
         {
         }
 
-        public OutsorcedEmployee(string name, int hours, double valuePerHour, double additionalCharge)
-            : base(name, hours, valuePerHour)
+        public OutsorcedEmployee(string name, int hours, double valuePerHour, double additionalCharge) : base(name, hours, valuePerHour)
         {
             AdditionalCharge = additionalCharge;
         }
